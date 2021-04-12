@@ -1,0 +1,21 @@
+name: DeployWorkflow
+
+on: 
+  push:
+    branches: [master]
+
+jobs:
+  WorkflowDeployment:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: DeployStage
+      id: DeployRequest
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: 'https://workflows.bitcap.team:82/hooks/deploy-dags?repo=${{github.repository}}&username=${{github.actor}}&token=${{secrets.DEPLOY_TOKEN}}'
+        timeout: 50000000
+        method: 'GET'
+    - name: ShowResponse
+      run: printf ${{ steps.DeployRequest.outputs.response }}

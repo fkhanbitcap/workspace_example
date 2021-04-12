@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+  workspace_docker_example:
+    image: workspace_docker_example
+    build:
+      context: .
+      dockerfile: deploy/example.Dockerfile
+    #volumes:
+      #- ./src:/var/task/src
+      #- ~/.aws:/root/.aws
+    stdin_open: true
+    tty: true
