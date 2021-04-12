@@ -8,10 +8,10 @@ from airflow.operators.docker_operator import DockerOperator
 
 OWNER = 'Muhammad Faizan Khan'
 DESCRIPTION = 'Airflow Workflow Workshop'
-DAG_NAME = 'workspace_example' ########## Unique Dag Name for workflow
+DAG_NAME = 'task_one' ########## Unique Dag Name for workflow
 DOCKER_IMAGE = 'workspace_docker_example' ########## NAME of your docker build
 START_DATE = datetime(2021, 4, 12)
-CRON_INTERVAL = '0 0/1 * * *'
+CRON_INTERVAL = '0 0/5 * * *'
 
 
 default_args = {
@@ -36,7 +36,7 @@ dag = DAG(
 
 t1 = DockerOperator(
     task_id='DockerOperator',
-    # command=['-cd', 'none', '-tc', 'SnowflakeLoad'],
+    command=['-tc', 'TaskOne'],
     image=DOCKER_IMAGE,
     api_version='auto',
     docker_url="unix://var/run/docker.sock",

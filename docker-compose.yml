@@ -7,8 +7,9 @@ services:
     build:
       context: .
       dockerfile: deploy/example.Dockerfile
-    #volumes:
-      #- ./src:/var/task/src
+    command: ['-tc', 'TaskTwo'] #### For my own execution
+    volumes:
+      - ./src:/var/task/src
       #- ~/.aws:/root/.aws
     stdin_open: true
     tty: true
