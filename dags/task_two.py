@@ -11,7 +11,7 @@ DESCRIPTION = 'Airflow Workflow Workshop'
 DAG_NAME = 'task_two' ########## Unique Dag Name for workflow
 DOCKER_IMAGE = 'workspace_docker_example' ########## NAME of your docker build
 START_DATE = datetime(2021, 4, 12)
-CRON_INTERVAL = '0 0/5 * * *'
+CRON_INTERVAL = '0 0/3 * * *'
 
 
 default_args = {
